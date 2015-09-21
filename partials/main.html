@@ -1,0 +1,26 @@
+<!-- <div layout="row" layout-align="center start" layout-margin layout-padding>
+  
+  <div flex="66" ng-style="{'background': 'white'}">
+    <p ng-class="{ active: $state.includes('showlist') }">This is the main with the list</p>
+    <ul><li ng-repeat="item in main.showlist">{{item.title}}</li></ul>
+  </div>
+  
+</div> -->
+
+<div layout="row" layout-align="center start">
+  <md-content layout-padding layout="row" layout-wrap layout-align="center start" flex="100">
+    <md-card ng-repeat="item in main.showlist track by $id(item)" class="md-whiteframe-z3">
+      <img ng-src="{{item.image}}" class="md-card-image">
+      <md-card-content>
+        <h2 class="md-title">{{item.title}}</h2>
+          <p>
+            {{item.actors}}
+          </p>
+      </md-card-content>
+      <div class="md-actions" layout="row" layout-align="end center">
+        <md-button>Action 1</md-button>
+        <md-button>Action 2</md-button>
+      </div>
+    </md-card>
+  </md-content>
+</div>
