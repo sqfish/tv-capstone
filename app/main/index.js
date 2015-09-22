@@ -9,7 +9,7 @@
     function($stateProvider, $urlRouterProvider){
       $stateProvider
         .state('app.main', {
-          url: '/', 
+          url: '/main', 
           views: {
             'content@app': {
               templateUrl: 'partials/main.html',
