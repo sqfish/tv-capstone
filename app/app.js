@@ -1,4 +1,5 @@
-angular.module('TVcast', [
+angular
+  .module('TVcast', [
       'ngMaterial',
       'ui.router',
       'firebase',
@@ -19,7 +20,7 @@ angular.module('TVcast', [
         if (error === "AUTH_REQUIRED") {
           $state.go("login")
         }
-      })
+      });
     }
   ])
   .controller('AppCtrl', ['currentAuth', '$scope', 'fbAuthorization', '$state', function(currentAuth, $scope, fbAuthorization, $state){

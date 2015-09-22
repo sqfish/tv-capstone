@@ -1,0 +1,28 @@
+<div layout="row" layout-align="center start" flex="100">
+  <div layout="column" flex-gt-lg="50" flex-gt-md="60" flex-md="60" flex-gt-sm="70" flex-sm="85" id="content" layout-align="center start"  layout-margin>
+    <md-card layout-fill class="md-whiteframe-z5">
+      <md-card-content>
+       <div layout="row" layout-align="center start">
+        <h2>TVcast Heading Here</h2>
+        </div>
+        <form name="createUserForm"> 
+          <div layout="column">
+            <h3>New Account</h3>
+            <h5>Welcome, please create a new account:</h5>
+            <md-input-container flex>
+              <label>User</label>
+              <input name="email" type="text" ng-model="acct.email">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Password</label>
+              <input name="password" type="password" ng-model="acct.password">
+            </md-input-container>
+          </div>
+          <div layout="row" layout-align="end">
+            <md-button class="md-raised md-primary" ng-click="acct.createAccount()">Create</md-button>
+          </div>
+        </form>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

@@ -3,12 +3,11 @@
   <div flex="66" ng-style="{'background': '#3949AB'}">Navigation here
     <div ng-show="currentAuth">
       <p>Hello, {{currentAuth.google.displayName}}</p>
-      <button ng-click="logout()">Logout</button>
+      <md-button class="md-raised" ng-click="logout()">Logout</button>
     </div>
     <div ng-hide="currentAuth">
       <p>Welcome, please log in</p>
-      <button ng-click="auth.$authWithOAuthPopup('google')">Login</button>
+      <md-button class="md-raised" ng-click="auth.$authWithOAuthPopup('google')">Login</button>
     </div>
   </div>
-  
 </div>

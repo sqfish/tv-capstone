@@ -1,44 +1,39 @@
-
 <div layout="row" layout-align="center start" flex="100">
-      <div layout="column" flex-gt-lg="50" flex-gt-md="60" flex-md="60" flex-gt-sm="70" flex-sm="85" id="content" layout-align="center start"  layout-margin>
-        <md-card layout-fill class="md-whiteframe-z5">
-          <md-card-content>
-            <h2>Heading Here</h2>
-            
-            <form name="userForm"> 
-              <div layout="column">
-                <h3>Login</h3>
-                <md-input-container flex>
-                  <label>User</label>
-                  <input>
-                </md-input-container>
-                <md-input-container flex>
-                  <label>Password</label>
-                  <input>
-                </md-input-container>
-              </div>
-              <div layout="row">
-                <div ng-show="security.authData">
-                  <p>Hello, {{security.authData.google.displayName}}</p>
-                  <button ng-click="security.auth.$unauth()">Logout</button>
-                </div>
-                <div ng-hide="security.authData">
-                  <p>Welcome, please log in</p>
-                  <button ng-click="security.auth.$authWithOAuthPopup('google')">Login</button>
-                </div>
-              </div>
-              <div layout="row">
-                <p ng-if="security.authData">Logged in user: <strong>{{ security.authData.uid }}</strong></p>
-                <p ng-if="security.error">Error: <strong>{{ security.error }}</strong></p>
-              </div>
-              <div layout="row" layout-align="end center">
-                <md-button >Create</md-button>
-                <md-button class="md-raised md-primary" ng-click="security.getCurrentUser()">Login</md-button>
-                <md-button class="md-raised md-primary" ng-click="security.loginViaProvider()">Google login</md-button>
-                <!-- <md-button class="md-raised md-primary" ng-click="security.loginViaProvider()">Google login</md-button> -->
-              </div>
-            </form>
-          </md-card-content>
-        </md-card>
-      </div>
-    </div>
+  <div layout="column" flex-gt-lg="50" flex-gt-md="60" flex-md="60" flex-gt-sm="70" flex-sm="85" id="content" layout-align="center start"  layout-margin>
+    <md-card layout-fill class="md-whiteframe-z5">
+      <md-card-content>
+       <div layout="row" layout-align="center start">
+        <h2>TVcast Heading Here</h2>
+        </div>
+        <div ng-show="security.authData">
+          <p>Hello, {{security.authData.google.displayName}}.</p>
+          <p>You are currently logged in as <strong>{{ security.authData.uid }}</strong>.</p>
+          <md-button class="md-raised" ng-click="security.auth.$unauth()">Logout</button>
+        </div>
+        <form name="userForm" ng-hide="security.authData"> 
+          <div layout="column">
+            <h3>Log in</h3>
+            <h5>Welcome, please log in:</h5>
+            <md-input-container flex>
+              <label>User</label>
+              <input type="text" ng-model="security.email">
+            </md-input-container>
+            <md-input-container flex>
+              <label>Password</label>
+              <input type="password" ng-model="security.password">
+            </md-input-container>
+          </div>
+          <div layout="row" layout-align="end">
+            <md-button ng-click="security.createAccount()">Create</md-button>
+            <md-button class="md-raised md-primary" ng-click="security.login()">Login</md-button>
+             <!-- <button ng-click="security.auth.$authWithOAuthPopup('google')">Login</button> -->
+            <!-- <md-button class="md-raised md-primary" ng-click="security.loginViaProvider()">Google login</md-button> -->
+          </div>
+          <div layout="row" layout-align="center end">
+            <md-button class="md-raised md-primary" ng-click="security.loginViaProvider()">Google login</md-button>
+          </div>
+        </form>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

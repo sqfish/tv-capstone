@@ -15,6 +15,11 @@
           templateUrl: 'partials/login.html',
           controller: 'SecurityCtrl as security'
       })
+      .state('account', {
+          url: '/account', 
+          templateUrl: 'partials/newaccount.html',
+          controller: 'NewAccountCtrl as acct'
+      })
       .state('app', {
         url         : '',
         abstract    : true,
@@ -32,6 +37,6 @@
           }]
         }
       });
-    }
+  }
 
 })();

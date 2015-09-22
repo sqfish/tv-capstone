@@ -10,9 +10,30 @@
   function SecurityCtrl ($firebaseAuth, $state, fbAuthorization) {
     var vm = this;
     vm.auth = fbAuthorization;
+    vm.email = "";
+    vm.password = "";
     vm.auth.$onAuth(function(authData){
       vm.authData = authData;
     });
+
+    vm.createAccount = function() {
+      $state.go("account");
+    }
+
+    vm.login = function() {
+      var ref = new Firebase("https://tv-capstone.firebaseio.com/");
+      ref.authWithPassword({
+        email     : vm.email,
+        password  : vm.password
+      }, function(error, authData){
+        if(error) {
+          vm.error = error;
+        } else {
+          vm.authData = authData;
+          $state.go("app.main");
+        }
+      });
+    };
 
     vm.loginViaProvider = function () {
       vm.authData = null;
@@ -28,24 +49,10 @@
       .then(function(authData){
         vm.authData = authData;
         $state.go("app.main");
-        console.log(vm.authData);
       }).catch(function(error){
         vm.error = error;
       });
     }
   }
-  //   vm.getCurrentUser = function () {
-  //     if ( AuthData.getAuthData() ) {
-  //       console.log("logged in");
-  //       return AuthData.currentUser;
-  //     } else {
-  //       console.log("not logged in");
-  //       console.log(AuthData.isAuthenticated);
-  //       console.log(AuthData.fbAuthorization);
-  //       console.log(AuthData.getAuthData());
-  //       return AuthData.currentUser;
-  //     }
-  //   };
-    
-
+  
 })();
