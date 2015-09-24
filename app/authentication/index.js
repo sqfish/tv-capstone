@@ -1,5 +1,5 @@
 (function() {
   'use strict';
 
-  angular.module('TVcast.authentication', [])
+  angular.module('TVcast.authentication', []);
 })();

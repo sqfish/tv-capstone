@@ -1,6 +1,6 @@
 <div layout="row" layout-align="center start" layout-margin layout-padding>
   
-  <div flex="66" ng-style="{'background': '#3949AB'}">Navigation here
+  <div flex="66" ng-style="{'background': '#3949AB'}">
     <div ng-show="currentAuth">
       <p>Hello, {{currentAuth.google.displayName}}</p>
       <md-button class="md-raised" ng-click="logout()">Logout</button>
@@ -10,4 +10,11 @@
       <md-button class="md-raised" ng-click="auth.$authWithOAuthPopup('google')">Login</button>
     </div>
   </div>
+
 </div>
+<md-tabs md-dynamic-height md-border-bottom>
+      <md-tab ui-sref="app.main" label="Main"></md-tab>
+      <md-tab ui-sref="app.home" label="My Account"></md-tab>
+      <md-tab ui-sref="app.popular" label="Popular"></md-tab>
+      <md-tab ui-sref="login" label="Login"></md-tab>
+  </md-tabs>

@@ -2,21 +2,21 @@
   'use strict';
 
   angular
-  .module('TVcast.main', [
+  .module('TVcast.home', [
     'ui.router'
   ])
   .config(['$stateProvider', '$urlRouterProvider', 
     function($stateProvider, $urlRouterProvider){
       $stateProvider
-        .state('app.main', {
-          url: '/main', 
+        .state('app.home', {
+          url: '/home', 
           views: {
             'content@app': {
-              templateUrl: 'partials/main.html',
-              controller: 'MainCtrl as main',
-              resolve: {
-                showlist: "ShowData"
-              }
+              templateUrl: 'partials/home.html',
+              controller: 'HomeCtrl as home'
+              // resolve: {
+              //   showlist: "ShowData"
+              // }
             }
           }
         });

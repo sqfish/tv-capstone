@@ -5,7 +5,8 @@ angular
       'firebase',
       'TVcast.authentication',
       'TVcast.routes',
-      'TVcast.main'
+      'TVcast.main',
+      'TVcast.home'
   ])
   .run(['$rootScope', '$state', '$stateParams',
     function ($rootScope, $state, $stateParams) {
@@ -18,7 +19,7 @@ angular
 
       $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
         if (error === "AUTH_REQUIRED") {
-          $state.go("login")
+          $state.go("login");
         }
       });
     }
@@ -29,6 +30,6 @@ angular
       fbAuthorization.$unauth();
       $scope.currentAuth = null;
       $state.go("login");
-    }
-  }])
+    };
+  }]);
  

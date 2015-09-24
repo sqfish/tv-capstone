@@ -22,10 +22,10 @@
         if(error) {
           console.log(error);
         } else {
-          $state.go("login")
+          $state.go("login");
         }
       });
-    }
+    };
   }
   
 })();

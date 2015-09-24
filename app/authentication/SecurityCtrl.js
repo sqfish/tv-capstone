@@ -18,7 +18,7 @@
 
     vm.createAccount = function() {
       $state.go("account");
-    }
+    };
 
     vm.login = function() {
       var ref = new Firebase("https://tv-capstone.firebaseio.com/");
@@ -52,7 +52,7 @@
       }).catch(function(error){
         vm.error = error;
       });
-    }
+    };
   }
   
 })();
