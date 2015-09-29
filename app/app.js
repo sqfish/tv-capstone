@@ -6,7 +6,8 @@ angular
       'TVcast.authentication',
       'TVcast.routes',
       'TVcast.main',
-      'TVcast.home'
+      'TVcast.search',
+      // 'TVcast.home'
   ])
   .run(['$rootScope', '$state', '$stateParams',
     function ($rootScope, $state, $stateParams) {

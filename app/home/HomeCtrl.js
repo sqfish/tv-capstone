@@ -1,17 +1,17 @@
-(function() {
-  'use strict';
+// (function() {
+//   'use strict';
 
-  angular
-  .module('TVcast.home')
-  .controller("HomeCtrl", HomeCtrl);
+//   angular
+//   .module('TVcast.home')
+//   .controller("HomeCtrl", HomeCtrl);
 
-  HomeCtrl.$inject = ['QueryShows'];
+//   HomeCtrl.$inject = ['QueryShows'];
 
-  function HomeCtrl (QueryShows) {
-    var vm = this;
-    vm.queryText = "";
-    vm.search = function() {
-      QueryShows.search(vm.queryText);
-    };
-  }
-})();
+//   function HomeCtrl (QueryShows) {
+//     var vm = this;
+//     vm.queryText = "";
+//     vm.search = function() {
+//       QueryShows.search(vm.queryText);
+//     };
+//   }
+// })();

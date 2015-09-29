@@ -1,0 +1,33 @@
+<div layout="column" layout-align="center start">
+  <md-content layout="row" layout-fill layout-align="center" flex>
+    <md-card flex="75">
+      <md-card-content layout="row" layout-wrap>
+        <md-input-container flex>
+        <label>Show Name</label>
+        <input name="queryText" type="text" ng-model="search.queryText" required>
+        </md-input-container>
+        <md-button ng-click="search.search()" flex="15">Search</md-button>
+      </md-card-content> 
+      <div>
+        <div ng-if="search.status" layout="row" layout-align="center center" class="md-padding">
+          {{search.status}}
+  </div>
+      </div>
+    </md-card>
+  </md-content>
+  <!-- </div> -->
+<div layout="row" layout-align="center start">
+  <md-content layout-padding layout="row" layout-wrap layout-fill layout-align="center start">
+    <md-card ng-repeat="item in search.queryResults track by $index" flex="20">
+      <img ng-src="{{item.show.images.poster.thumb}}" class="md-card-image" height="300px" width="200px">
+      <md-card-content>
+        <p class="md-title">{{item.show.title}}</p>
+      </md-card-content>
+      <div class="md-actions" layout="row" layout-align="end center">
+        <md-button ng-click="search.showAdvanced($event, $index)">Details</md-button>
+        <md-button>Follow</md-button>
+      </div>
+    </md-card>
+  </md-content>
+</div>
+</div>

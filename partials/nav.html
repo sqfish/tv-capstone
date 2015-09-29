@@ -1,20 +1,69 @@
-<div layout="row" layout-align="center start" layout-margin layout-padding>
-  
-  <div flex="66" ng-style="{'background': '#3949AB'}">
-    <div ng-show="currentAuth">
-      <p>Hello, {{currentAuth.google.displayName}}</p>
-      <md-button class="md-raised" ng-click="logout()">Logout</button>
-    </div>
-    <div ng-hide="currentAuth">
-      <p>Welcome, please log in</p>
-      <md-button class="md-raised" ng-click="auth.$authWithOAuthPopup('google')">Login</button>
-    </div>
+<div layout="column">
+  <div layout="row">   
+    <md-toolbar>
+      <div>
+        <h2>TVcast</h2>
+        <span flex></span>
+      </div>
+      <div class="md-toolbar-tools">
+        <div ng-show="currentAuth">
+          <p>Hello, {{currentAuth.google.displayName}}
+          <md-button ng-click="logout()">Logout</md-button></p>
+        </div>
+        <div ng-hide="currentAuth">
+          <p>Welcome, please log in
+          <md-button ng-click="auth.$authWithOAuthPopup('google')">Login</md-button></p>
+        </div>
+      </div>
+    </md-toolbar>
   </div>
-
-</div>
-<md-tabs md-dynamic-height md-border-bottom>
-      <md-tab ui-sref="app.main" label="Main"></md-tab>
-      <md-tab ui-sref="app.home" label="My Account"></md-tab>
-      <md-tab ui-sref="app.popular" label="Popular"></md-tab>
-      <md-tab ui-sref="login" label="Login"></md-tab>
+  <md-tabs md-border-bottom>
+    <md-tab ui-sref="app.main" label="Main"></md-tab>
+    <md-tab ng-disabled=true ui-sref="app.home" label="My Account"></md-tab>
+    <md-tab ui-sref="app.search" label="Search"></md-tab>
+    <md-tab ng-disabled=true ui-sref="app.popular" label="Popular"></md-tab>
+    <md-tab ui-sref="login" label="Login"></md-tab>
   </md-tabs>
+</div>
+
+<!-- <div layout="column" class="relative" layout-fill role="main">
+  <md-toolbar ng-show="!showSearch"> -->
+<!-- toolbar -->
+    <!-- <div class="md-toolbar-tools">
+      <p class="title">TV CAST</p>
+      <span flex></span>
+      <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+        <ng-md-icon icon="search"></ng-md-icon>
+      </md-button>
+    </div> -->
+<!-- tab -->
+   <!--  <md-tabs md-stretch-tabs class="md-primary" md-selected="data.selectedIndex">
+      <md-tab id="tab1" aria-controls="tab1-content">
+        <h3>All</h3>
+      </md-tab>
+      <md-tab id="tab2" aria-controls="tab2-content">
+         <h3>Online</h3>
+      </md-tab>
+      <md-tab id="tab3" aria-controls="tab3-content">
+        <h3>Offline</h3>
+      </md-tab>
+    </md-tabs>
+  </md-toolbar> -->
+<!-- searhbar -->
+ <!--  <md-toolbar class="md-hue-1" ng-show="showSearch">
+    <div class="md-toolbar-tools">
+      <md-button ng-click="showSearch = !showSearch" aria-label="Back">
+        <ng-md-icon icon="arrow_back"></ng-md-icon>
+      </md-button>
+      <h3 flex="10">Back</h3>
+      <md-input-container md-theme="input" flex>
+        <label>&nbsp;</label>
+        <input ng-model="search.$.$" placeholder="Search Channels">
+          <!search.$.$ for deeper search cos the name for streams endpoint is in channel object -->
+      <!-- </md-input-container>
+      <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+        <ng-md-icon icon="search"></ng-md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+</div> -->
