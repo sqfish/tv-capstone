@@ -4,25 +4,25 @@
     <div class="md-toolbar-tools">
       <h2>{{search.selectedResult.show.title}}</h2>
       <span flex></span>
-      <md-button class="md-icon-button" ng-click="cancel()">
+      <!-- <md-button class="md-icon-button" ng-click="cancel()">
         <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
       </md-button>
-    </div>
+ -->    </div>
   </md-toolbar>
-  <md-dialog-content style="max-width:800px;max-height:810px; ">
+  <md-dialog-content style="max-width:800px;max-height:810px;">
     <div layout="row" layout-margin layout-padding>
       <div flex>
         <img ng-src="{{search.selectedResult.show.images.poster.thumb}}" alt="Poster">
       </div>
       <div layout="column" flex>
-        <h4>{{search.selectedResult.show.title}}</h4>
+        <h4>{{search.selectedResult.show.title}}  <small>({{search.selectedResult.show.year}})</small></h4>
         <p>{{search.selectedResult.show.overview}}</p>
       </div>
     </div>
   </md-dialog-content>
 
   <div class="md-actions" layout="row">
-    <md-button href="" target="_blank" md-autofocus>
+    <md-button href="http://www.imdb.com/title/{{search.selectedResult.show.ids.imdb}}/" target="_blank" md-autofocus>
       More on imdb
     </md-button>
     <span flex></span>

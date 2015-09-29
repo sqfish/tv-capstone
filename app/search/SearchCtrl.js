@@ -7,7 +7,6 @@
   .controller("DialogController", DialogController);
 
   SearchCtrl.$inject = ['$scope', 'QueryShows', '$mdDialog'];
-  DialogController.$inject = ['$scope', '$mdDialog'];
 
   function SearchCtrl ($scope, QueryShows, $mdDialog) {
     var vm = this;
@@ -55,6 +54,11 @@
 
     $scope.cancel = function() {
       $mdDialog.cancel();
+    };
+
+    $scope.follow = function(ids) {
+      //Post to firebase here
+      $mdDialog.hide();
     };
 
     $scope.answer = function(answer) {

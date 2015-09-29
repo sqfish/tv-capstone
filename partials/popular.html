@@ -1,0 +1,15 @@
+<div layout="row" layout-align="center start">
+  <md-content layout-padding layout="row" layout-wrap layout-fill layout-align="center start">
+    <md-card ng-repeat="item in popular.showlistpop | orderBy: ['-votes'] | filter: {country: 'us'} track by $index" flex="20">
+      <img ng-src="{{item.images.poster.thumb}}" class="md-card-image" height="300px" width="200px">
+      <md-card-content>
+        <h4 class="md-title">{{item.title}} <small>({{item.year}})</small></h4>
+      </md-card-content>
+      <div class="md-actions" layout="row" layout-align="end center">
+        <md-button ng-click="search.showAdvanced($event, $index)">Details</md-button>
+        <md-button>Follow</md-button>
+      </div>
+    </md-card>
+  </md-content>
+</div>
+</div>

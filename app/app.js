@@ -7,6 +7,7 @@ angular
       'TVcast.routes',
       'TVcast.main',
       'TVcast.search',
+      'TVcast.popular'
       // 'TVcast.home'
   ])
   .run(['$rootScope', '$state', '$stateParams',
