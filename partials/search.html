@@ -14,12 +14,11 @@
   </div>
       </div>
     </md-card>
-  </md-content>
-  <!-- </div> -->
+    </md-content>
 <div layout="row" layout-align="center start">
   <md-content layout-padding layout="row" layout-wrap layout-fill layout-align="center start">
     <md-card ng-repeat="item in search.queryResults track by $index" flex="20">
-      <img ng-src="{{item.show.images.poster.thumb}}" class="md-card-image" height="300px" width="200px">
+      <img ng-src="{{item.show.images.poster.thumb}}" class="md-card-image" height="300px" width="200px" ng-if="item.show.images.poster.thumb">
       <md-card-content>
         <p class="md-title">{{item.show.title}}</p>
       </md-card-content>

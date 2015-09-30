@@ -1,4 +1,28 @@
-<div layout="row" layout-align="center start">
+<!-- <div layout="row" layout-align="center start"> -->
+  <md-content layout-padding class="gridListdemoDynamicTiles">
+  <!-- <div class="gridListdemoDynamicTiles" flex> -->
+    <!-- <md-grid-list
+        md-cols="1" md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
+        md-row-height-gt-md="1:1" md-row-height="4:3"
+        md-gutter="8px" md-gutter-gt-sm="4px" > -->
+    <md-grid-list 
+            md-cols="1" md-cols-sm="2" md-cols-md="6" md-cols-gt-md="6"
+            md-row-height="4:3"
+            md-gutter=".8rem">
+    <md-grid-tile ng-repeat="tile in popular.tiles | orderBy: ['-votes'] | filter: {country: 'us'} | filter: {genre: '!animation'}"
+                  md-rowspan="{{tile.rowspan}}"
+                  md-colspan="{{tile.colspan}}"
+                  md-colspan-sm="1"
+                  ng-style="{'background-image': 'url({{tile.image}})','background-size': 'cover', 'background-position': 'center center'}">
+      <!-- <img ng-src="{{item.images.poster.thumb}}"> -->
+      <!-- <md-grid-tile-header><h4>{{tile.network}}</h4></md-grid-tile-header> -->
+      <md-grid-tile-footer><h3>{{tile.title}}</h3></md-grid-tile-footer>
+    </md-grid-tile>
+  </md-grid-list>
+<!-- </div> -->
+</md-content>
+<!-- </div> -->
+<!-- <div layout="row" layout-align="center start">
   <md-content layout-padding layout="row" layout-wrap layout-fill layout-align="center start">
     <md-card ng-repeat="item in popular.showlistpop | orderBy: ['-votes'] | filter: {country: 'us'} track by $index" flex="20">
       <img ng-src="{{item.images.poster.thumb}}" class="md-card-image" height="300px" width="200px">
@@ -11,5 +35,4 @@
       </div>
     </md-card>
   </md-content>
-</div>
 </div>

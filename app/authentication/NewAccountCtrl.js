@@ -5,27 +5,28 @@
     .module('TVcast.authentication')
     .controller('NewAccountCtrl', NewAccountCtrl);
 
-  NewAccountCtrl.$inject = ['Firebase', '$state'];
+  NewAccountCtrl.$inject = ['fbAuthorization', '$state'];
   
-  function NewAccountCtrl(Firebase, $state) {
+  function NewAccountCtrl(fbAuthorization, $state) {
     var vm = this;
-    var ref = new Firebase("https://tv-capstone.firebaseio.com/");
-    // vm.email = "";
-    // vm.password = "";
+    vm.ref = fbAuthorization;
     vm.createAccount = function() {
-      console.log(vm.email);
-      console.log(vm.password);
-      ref.createUser({
+      vm.ref.$createUser({
         email     : vm.email,
         password  : vm.password
-      }, function(error, userData){
-        if(error) {
-          console.log(error);
-        } else {
-          $state.go("login");
-        }
+      }).then(function(userData){
+        // vm.ref.child('users').child(userData.uid).set({
+        //   name: vm.email.replace(/@.*/, '')
+        // });
+        return vm.ref.$authWithPassword({
+          email     : vm.email,
+          password  : vm.password
+        });
+      }).then(function(authData) {
+        $state.go('app.main');
+      }).catch(function(error){
+        console.log("error", error);
       });
     };
   }
-  
 })();

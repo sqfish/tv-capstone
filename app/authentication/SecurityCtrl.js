@@ -14,6 +14,7 @@
     vm.password = "";
     vm.auth.$onAuth(function(authData){
       vm.authData = authData;
+      console.log("authData: ", authData);
     });
 
     vm.createAccount = function() {

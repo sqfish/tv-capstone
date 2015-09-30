@@ -19,6 +19,18 @@
               // }
             }
           }
+        })
+        .state('app.search2', {
+          url: '/search2', 
+          views: {
+            'content@app': {
+              templateUrl: 'partials/search2.html',
+              controller: 'SearchCtrl as search2'
+              // resolve: {
+              //   showlist: "ShowData"
+              // }
+            }
+          }
         });
     }
   ]);

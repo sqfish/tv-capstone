@@ -28,6 +28,7 @@ angular
   ])
   .controller('AppCtrl', ['currentAuth', '$scope', 'fbAuthorization', '$state', function(currentAuth, $scope, fbAuthorization, $state){
     $scope.currentAuth = currentAuth;
+    console.log('currentAuth', currentAuth);
     $scope.logout = function() {
       fbAuthorization.$unauth();
       $scope.currentAuth = null;
