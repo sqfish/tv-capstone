@@ -2,21 +2,18 @@
   'use strict';
 
   angular
-  .module('TVcast.search', [
+  .module('TVcast.account', [
     'ui.router'
   ])
   .config(['$stateProvider', '$urlRouterProvider', 
     function($stateProvider, $urlRouterProvider){
       $stateProvider
-        .state('app.search', {
-          url: '/search', 
+        .state('app.account', {
+          url: '/account', 
           views: {
             'content@app': {
-              templateUrl: 'partials/search.html',
-              controller: 'SearchCtrl as search'
-              // resolve: {
-              //   showlist: "ShowData"
-              // }
+              templateUrl: 'partials/account.html',
+              controller: 'AccountCtrl as account'
             }
           }
         });

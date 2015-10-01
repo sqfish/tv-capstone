@@ -1,14 +1,11 @@
-<div layout="column">
-  <div layout="row">   
-    <md-toolbar>
-      <div>
-        <h2>TVcast</h2>
-        <span flex></span>
-      </div>
+<div layout="column" flex>
+    <md-toolbar class="md-primary">
       <div class="md-toolbar-tools">
+        TVcast
+        <span flex></span>
         <div ng-show="currentAuth">
-          <p>Hello, {{currentAuth.google.displayName}}
-          <md-button ng-click="logout()">Logout</md-button></p>
+          Hello, {{currentAuth.google.displayName}}
+          <md-button ng-click="logout()">Logout</md-button>
         </div>
         <div ng-hide="currentAuth">
           <p>Welcome, please log in
@@ -17,9 +14,9 @@
       </div>
     </md-toolbar>
   </div>
-  <md-tabs md-border-bottom>
+  <md-tabs md-border-bottom md-selected="currentState">
     <md-tab ui-sref="app.main" label="Main"></md-tab>
-    <md-tab ng-disabled=true ui-sref="app.home" label="My Account"></md-tab>
+    <md-tab ui-sref="app.account" label="My Account"></md-tab>
     <md-tab ui-sref="app.search" label="Search"></md-tab>
     <md-tab ui-sref="app.popular" label="Popular"></md-tab>
     <md-tab ui-sref="login" label="Login"></md-tab>

@@ -18,7 +18,7 @@
     });
 
     vm.createAccount = function() {
-      $state.go("account");
+      $state.go("register");
     };
 
     vm.login = function() {

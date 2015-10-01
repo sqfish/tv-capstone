@@ -15,9 +15,9 @@
           templateUrl: 'partials/login.html',
           controller: 'SecurityCtrl as security'
       })
-      .state('account', {
-          url: '/account', 
-          templateUrl: 'partials/newaccount.html',
+      .state('register', {
+          url: '/register', 
+          templateUrl: 'partials/register.html',
           controller: 'NewAccountCtrl as acct'
       })
       .state('app', {

@@ -7,8 +7,15 @@ angular
       'TVcast.routes',
       'TVcast.main',
       'TVcast.search',
-      'TVcast.popular'
-      // 'TVcast.home'
+      'TVcast.popular',
+      'TVcast.account'
+  ])
+  .config(['$mdThemingProvider',
+    function ($mdThemingProvider){
+      $mdThemingProvider.theme('default')
+        .primaryPalette('indigo')
+        .accentPalette('deep-orange');
+    }
   ])
   .run(['$rootScope', '$state', '$stateParams',
     function ($rootScope, $state, $stateParams) {
@@ -28,7 +35,15 @@ angular
   ])
   .controller('AppCtrl', ['currentAuth', '$scope', 'fbAuthorization', '$state', function(currentAuth, $scope, fbAuthorization, $state){
     $scope.currentAuth = currentAuth;
-    console.log('currentAuth', currentAuth);
+    var tabStateMapping = {
+      'app.main': 0,
+      'app.account': 1,
+      'app.search': 2,
+      'app.popular': 3,
+      'app.login': 4
+    };
+    $scope.currentState = tabStateMapping[$state.current.name];
+    
     $scope.logout = function() {
       fbAuthorization.$unauth();
       $scope.currentAuth = null;
