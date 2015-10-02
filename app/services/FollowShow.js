@@ -9,12 +9,13 @@
 
   function FollowShow (QueryShows, ShowData, $firebaseArray) {
     var vm = this;
-    vm.ref = ShowData;
+    // var ref = ShowData;
+    var ref = new Firebase("https://tv-capstone.firebaseio.com/showlist");
     vm.getShowDetails = function(id) {
       QueryShows.lookup(id)
       .then(function(response) {
         console.log("success", response.data);
-        vm.postShowDetails(response.data);
+        return vm.postShowDetails(response.data);
         // return response.data;
       }, function(response) {
         console.log("error", response);
@@ -27,13 +28,13 @@
       var key = showDetails.ids.slug;
       var obj = {};
       obj[key] = showDetails;
-      vm.ref.$add(obj); 
+      ref.child(key).set(showDetails);
+      // return ref.$add(obj); 
     };
 
     return {
       follow : function(id) {
-        var details = vm.getShowDetails(id);
-        return;
+        return vm.getShowDetails(id);
       }
     };
   }
