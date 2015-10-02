@@ -11,7 +11,7 @@
     var vm = this;
     return {
       search: function(query) {
-        var rurl = 'https://api-v2launch.trakt.tv/search?query=' + query + '&type=show&?page=1&limit=200';
+        var rurl = 'https://api-v2launch.trakt.tv/search?query=' + query + '&type=show&?page=1&limit=100';
         var appID = 'd2a7a0ca1dbe8300bcfa5f0e1d38e10e03403ee7769e390f636411d18bbcc00e';
         var request = {
           method: 'GET',

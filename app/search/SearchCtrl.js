@@ -12,9 +12,10 @@
     var vm = this;
     vm.queryText = "";
     vm.queryResults = "";
-    vm.status = "Status Here";
+    vm.status = null;
     vm.selectedResult = "";
     vm.search = function() {
+      vm.status = null;
       QueryShows.search(vm.queryText)
       .then(function(response) {
         console.log("success", response.data);
@@ -25,12 +26,17 @@
         return response.data;
       });
     };
+    vm.followShow = function(show) {
+      show = show.show;
+      vm.status = 'You followed "' + show.title + '".';
+      FollowShow.follow(show.ids.trakt);
+    };
 
     vm.showAdvanced = function(ev, result) {
       vm.selectedResult = result;
       $mdDialog.show({
         controller: DialogController,
-        templateUrl: 'partials/dialog.html',
+        templateUrl: 'partials/dialog-show-detail.html',
         scope: $scope,
         preserveScope: true,
         parent: angular.element(document.body),
@@ -39,8 +45,7 @@
         locals: {result: vm.selectedResult}
       })
       .then(function(show) {
-        FollowShow.follow(show.ids.trakt);
-        vm.status = 'You followed "' + show.title + '".';
+        vm.followShow(show);
       }, function() {
         vm.status = 'You cancelled the dialog.';
       });
@@ -60,10 +65,6 @@
     $scope.follow = function(show) { 
       //Post to firebase here
       $mdDialog.hide(show);
-    };
-
-    $scope.answer = function(answer) {
-      $mdDialog.hide(answer);
     };
   }
 

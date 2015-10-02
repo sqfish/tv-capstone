@@ -16,7 +16,6 @@
       .then(function(response) {
         console.log("success", response.data);
         return vm.postShowDetails(response.data);
-        // return response.data;
       }, function(response) {
         console.log("error", response);
         return response;
@@ -28,8 +27,7 @@
       var key = showDetails.ids.slug;
       var obj = {};
       obj[key] = showDetails;
-      ref.child(key).set(showDetails);
-      // return ref.$add(obj); 
+      return ref.child(key).set(showDetails);
     };
 
     return {
