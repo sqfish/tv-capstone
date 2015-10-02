@@ -1,7 +1,7 @@
 <div layout="column" flex>
-    <md-toolbar class="md-primary">
-      <div class="md-toolbar-tools">
-        TVcast
+    <md-toolbar class="md-primary md-hue-2 md-medium-tall md-toolbar-tools">
+      <div class="md-toolbar-tools" layout="row">
+        <md-toolbar-filler layout layout-align="center center"><img src="/img/logo-wh2.png" width="125px"></md-toolbar-filler>
         <span flex></span>
         <div ng-show="currentAuth">
           Hello, {{currentAuth.google.displayName}}
@@ -13,7 +13,6 @@
         </div>
       </div>
     </md-toolbar>
-  </div>
   <md-tabs md-border-bottom md-selected="currentState">
     <md-tab ui-sref="app.main" label="Main"></md-tab>
     <md-tab ui-sref="app.account" label="My Account"></md-tab>
@@ -21,6 +20,7 @@
     <md-tab ui-sref="app.popular" label="Popular"></md-tab>
     <md-tab ui-sref="login" label="Login"></md-tab>
   </md-tabs>
+
 </div>
 
 <!-- <div layout="column" class="relative" layout-fill role="main">

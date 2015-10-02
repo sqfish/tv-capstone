@@ -13,8 +13,19 @@ angular
   .config(['$mdThemingProvider',
     function ($mdThemingProvider){
       $mdThemingProvider.theme('default')
-        .primaryPalette('indigo')
-        .accentPalette('deep-orange');
+        .primaryPalette('indigo', {
+          'default' : '500',
+          'hue-1'   : '50',
+          'hue-2'   : '800',
+          'hue-3'   : 'A700'
+        })
+        .accentPalette('amber')
+        .warnPalette('red', {
+          'default' : '600',
+          'hue-1'   : '500',
+          'hue-2'   : '900',
+          'hue-3'   : 'A700'
+        });
     }
   ])
   .run(['$rootScope', '$state', '$stateParams',

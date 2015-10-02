@@ -1,12 +1,57 @@
+<div layout="row" layout-padding layout-wrap layout-fill layout-align="center center">
+  <md-whiteframe class="md-whiteframe-5dp" flex="65" layout layout-fill>
+    <div layout="column">
+      <div layout="row"> 
+        <div layout="column" layout-padding flex style="background-color: #FFC107;">
+          <h2 class="white">Welcome back, {{account.auth.google.cachedUserProfile.given_name}}</h2>
+          <h4 style="color: #FFF;"><i class="material-icons">place</i>Nashville, TN</h4>
+          <md-button  class="md-primary md-hue-1 md-raised"
+                      title="Manage user profile"
+                      ng-disabled="false"
+                      aria-label="Update">
+            <md-icon class="material-icons">create</md-icon>
+            Update
+          </md-button>
+        </div>
+        <div ng-show="account.auth.google.profileImageURL">
+          <img ng-show="account.auth.google.profileImageURL" ng-src="{{account.auth.google.profileImageURL}}" width="200px">
+        </div>
+      </div>
+      <div class="overview" layout="row" flex layout-padding style="background-color: #eee;">
+        <div layout="column" layout-padding layout-margin layout-align="center center">
+                    <h3>FOLLOWING</h3>
+                    <h4>33 <small>shows</small></h4>
+        </div>
+        <div layout="column" layout-padding layout-margin layout-align="center center">
+                    <h3>FAVORITES</h3>
+                    <h4>4 <small>shows</small></h4>
+        </div>
+        <div layout="column" layout-padding layout-margin layout-align="center center">
+                    <h3>NEWLY AIRED</h3>
+                    <h4>12 <small> episodes</small></h4>
+        </div>
+      </div>
+    </div>
+    <div layout="row"> 
+      <div layout="column">
+        <md-button><md-icon class="material-icons">account_circle</md-icon></md-button>
+        <md-button flex><md-icon class="material-icons">create</md-icon></md-button>
+        <md-button flex><md-icon class="material-icons">create</md-icon></md-button>
+        <md-button flex><md-icon class="material-icons">create</md-icon></md-button>
+      </div>
+      <div>Tab content</div>
+    </div>
+  </md-whiteframe>
+</div>
+<!--
 <div class="container">
-    <div class="row user-menu-container square">
-        <div class="col-md-7 user-details">
+  <div class="row user-menu-container square">
+    <div class="col-md-7 user-details">
             <div class="row coralbg white">
                 <div class="col-md-6 no-pad">
                     <div class="user-pad">
                         <h3>Welcome back, {{account.auth.google.cachedUserProfile.given_name}}</h3>
                         <h4 class="white"><i class="material-icons">place</i> Nashville, TN</h4>
-                        <h4 class="white"><i class="fa fa-twitter"></i> sallyfish</h4>
                         <button type="button" class="btn btn-labeled btn-info" href="#">
                             <span class="btn-label"><i class="fa fa-pencil"></i></span>Update</button>
                     </div>
@@ -150,3 +195,4 @@
         </div>
     </div>
 </div>
+-->

@@ -3,7 +3,7 @@
     <md-card layout-fill class="md-whiteframe-z5">
       <md-card-content>
        <div layout="row" layout-align="center start">
-        <h2>TVcast Heading Here</h2>
+        <img src="/img/logo2-bl.png" width="50%">
         </div>
         <div ng-show="security.authData">
           <p>Hello, {{security.authData.google.displayName}}.</p>
@@ -12,8 +12,7 @@
         </div>
         <form name="userForm" ng-hide="security.authData"> 
           <div layout="column">
-            <h3>Log in</h3>
-            <h5>Welcome, please log in:</h5>
+            <h4>Welcome, please log in:</h4>
             <md-input-container flex>
               <label>User</label>
               <input type="text" ng-model="security.email">

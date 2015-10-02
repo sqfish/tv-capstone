@@ -6,9 +6,9 @@
   .controller("SearchCtrl", SearchCtrl)
   .controller("DialogController", DialogController);
 
-  SearchCtrl.$inject = ['$scope', 'QueryShows', '$mdDialog'];
+  SearchCtrl.$inject = ['$scope', 'QueryShows', '$mdDialog', 'FollowShow'];
 
-  function SearchCtrl ($scope, QueryShows, $mdDialog) {
+  function SearchCtrl ($scope, QueryShows, $mdDialog, FollowShow) {
     var vm = this;
     vm.queryText = "";
     vm.queryResults = "";
@@ -26,8 +26,8 @@
       });
     };
 
-    vm.showAdvanced = function(ev, $index) {
-      vm.selectedResult = vm.queryResults[$index];
+    vm.showAdvanced = function(ev, result) {
+      vm.selectedResult = result;
       $mdDialog.show({
         controller: DialogController,
         templateUrl: 'partials/dialog.html',
@@ -38,8 +38,9 @@
         clickOutsideToClose:true,
         locals: {result: vm.selectedResult}
       })
-      .then(function(answer) {
-        vm.status = 'You followed "' + answer + '".';
+      .then(function(show) {
+        FollowShow.follow(show.ids.trakt);
+        vm.status = 'You followed "' + show.title + '".';
       }, function() {
         vm.status = 'You cancelled the dialog.';
       });
@@ -56,9 +57,9 @@
       $mdDialog.cancel();
     };
 
-    $scope.follow = function(ids) {
+    $scope.follow = function(show) { 
       //Post to firebase here
-      $mdDialog.hide();
+      $mdDialog.hide(show);
     };
 
     $scope.answer = function(answer) {
