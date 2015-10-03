@@ -23,8 +23,7 @@
         targetEvent: ev,
         clickOutsideToClose:true,
         locals: {result: vm.currentShow}
-      })
-      .then(function(show) {
+      }).then(function(show) {
       }, function() {
       });
     };
