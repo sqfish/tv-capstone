@@ -1,14 +1,13 @@
-<!-- <div layout="row" layout-align="center start">
-  <md-content layout-padding layout="row" layout-wrap layout-align="center start" flex="100">
-    <md-card class="md-whiteframe-z3">
+<div layout="row" layout-align="center start">
+  <md-content layout-padding layout="row" layout-wrap layout-fill layout-align="center start">
+    <md-card ng-repeat="item in home.limit | orderBy: '-rating' as result track by $index" flex="20">
+      <img ng-src="{{item.images.poster.medium}}" class="md-card-image" height="350px" width="100px">
       <md-card-content>
-        <md-input-container flex>
-        <label>Search</label>
-        <input type="text" ng-model="home.queryText">
-        </md-input-container>
-      <md-button class="md-raised md-primary" ng-click="home.search()">search</md-button>
+        <span class="md-title">{{item.title | limitTo: 23}}<span ng-if="item.title.length > 23">...</span></span>
       </md-card-content>
-      
+      <div class="md-actions" layout="row" layout-align="end center">
+        <md-button ng-click="home.showAdvanced($event, result[$index])">Details</md-button>
+      </div>
     </md-card>
   </md-content>
-</div> -->
+</div>

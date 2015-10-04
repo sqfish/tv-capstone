@@ -14,9 +14,10 @@
     vm.password = "";
     vm.auth.$onAuth(function(authData){
       vm.authData = authData;
+      var uid;
       console.log("change in authData", authData);
       if (authData) {
-        var uid = authData.uid;
+        uid = authData.uid;
         console.log("uid ", uid);
         AuthUserData.map(uid).$loaded(function(data){
           vm.rootuid = data.$value;
@@ -27,7 +28,7 @@
           });
         });
       } else {
-        var uid = null;
+        uid = null;
       }
     });
 

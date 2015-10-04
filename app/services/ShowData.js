@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('TVcast.main')
+    .module('TVcast')
     .factory('ShowData', ShowData);
 
     ShowData.$inject = ['$firebaseArray'];

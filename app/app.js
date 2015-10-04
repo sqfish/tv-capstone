@@ -8,7 +8,8 @@ angular
       'TVcast.main',
       'TVcast.search',
       'TVcast.popular',
-      'TVcast.account'
+      'TVcast.account',
+      'TVcast.home'
   ])
   .config(['$mdThemingProvider',
     function ($mdThemingProvider){
@@ -44,14 +45,32 @@ angular
       });
     }
   ])
-  .controller('AppCtrl', ['currentAuth', '$scope', 'fbAuthorization', '$state', function(currentAuth, $scope, fbAuthorization, $state){
+  .controller('AppCtrl', ['currentAuth', '$scope', '$state', 'fbAuthorization', 'AuthUserData', function(currentAuth, $scope, $state, fbAuthorization, AuthUserData){
     $scope.currentAuth = currentAuth;
+    var userData = AuthUserData.userData();
+    // Check to see if user ids have been stored in userData
+    // This helps resolve data if user refreshes browser
+    if (!userData.uid || !userData.mainuid) {
+      var uid = currentAuth.uid;
+      AuthUserData.map(uid).$loaded(function(data){
+        var rootuid = data.$value;
+        AuthUserData.profile(rootuid).$loaded(function(data){
+          $scope.userData = data;
+        });
+      });
+    } else {
+      AuthUserData.profile(userData.mainuid).$loaded(function(data){
+        $scope.userData = data;
+      });
+    }
+
     var tabStateMapping = {
       'app.main': 0,
-      'app.account': 1,
-      'app.search': 2,
-      'app.popular': 3,
-      'app.login': 4
+      'app.home': 1,
+      'app.account': 2,
+      'app.search': 3,
+      'app.popular': 4,
+      'app.login': 5
     };
     $scope.currentState = tabStateMapping[$state.current.name];
     

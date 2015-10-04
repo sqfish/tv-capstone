@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-  .module('TVcast.search')
+  .module('TVcast')
   .factory("QueryShows", QueryShows);
 
   QueryShows.$inject = ['$http'];

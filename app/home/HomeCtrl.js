@@ -1,17 +1,73 @@
-// (function() {
-//   'use strict';
+(function() {
+  'use strict';
 
-//   angular
-//   .module('TVcast.home')
-//   .controller("HomeCtrl", HomeCtrl);
+  angular
+  .module('TVcast.home')
+  .controller("HomeCtrl", HomeCtrl)
+  .controller("DialogDetailCtrl", DialogDetailCtrl);
 
-//   HomeCtrl.$inject = ['QueryShows'];
+  HomeCtrl.$inject = ['ShowData', 'AuthUserData', 'myFilterFilter', '$mdDialog', '$scope', 'currentAuth'];
 
-//   function HomeCtrl (QueryShows) {
-//     var vm = this;
-//     vm.queryText = "";
-//     vm.search = function() {
-//       QueryShows.search(vm.queryText);
-//     };
-//   }
-// })();
+  function HomeCtrl (ShowData, AuthUserData, myFilterFilter, $mdDialog, $scope, currentAuth) {
+    var vm = this;
+    var userData = AuthUserData.userData();
+    vm.showlist = null;
+    // vm.following = '';
+    // vm.following = null;
+    
+    // Check to see if user ids have been stored in userData
+    // This helps resolve data if user refreshes browser
+    // SELF: This needs to DRY-ed, maybe with service for all data loading (main, home, profile)
+    if (!userData.uid || !userData.mainuid) {
+      var uid = currentAuth.uid;
+      AuthUserData.map(uid).$loaded(function(data){
+        vm.rootuid = data.$value;
+        AuthUserData.profile(vm.rootuid).$loaded(function(data){
+          vm.userData = data;
+          vm.following = data.following;
+          ShowData.$loaded(function(data){
+            vm.showlist = ShowData;
+            vm.limit = myFilterFilter(vm.showlist, {ids: {slug: vm.following}});
+          });
+        });
+      });
+    } else {
+      AuthUserData.profile(userData.mainuid).$loaded(function(data){
+        vm.userData = data;
+        vm.following = data.following;
+        ShowData.$loaded(function(data){
+          vm.showlist = ShowData;
+          vm.limit = myFilterFilter(vm.showlist, {ids: {slug: vm.following}});
+          console.log("limit", vm.limit);
+        });
+      });
+    }
+
+    vm.showAdvanced = function(ev, result) {
+      vm.currentShow = result;
+      console.log("result", result);
+      $mdDialog.show({
+        controller: DialogDetailCtrl,
+        templateUrl: 'partials/dialog-show-followed.html',
+        scope: $scope,
+        preserveScope: true,
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        locals: {result: vm.currentShow}
+      }).then(function(show) {
+      }, function() {
+      });
+    };
+  }
+
+  function DialogDetailCtrl($scope, $mdDialog, result) {
+    console.log("currentShow", $scope.home.currentShow);
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+  }
+})();

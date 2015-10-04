@@ -1,0 +1,45 @@
+<md-dialog aria-label="{{main.currentShow.title}}">
+  <form>
+    <!-- <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{main.currentShow.title}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <i class="material-icons">clear</i>
+        </md-button>
+      </div>
+    </md-toolbar> -->
+    <md-dialog-content style="max-width:800px;max-height:810px;">
+      <div layout="row">
+        <div layout-padding>
+          <img ng-src="{{home.currentShow.images.poster.medium}}" alt="Poster" height="300px">
+        </div>
+        <div layout="column" flex>
+          <h3 class="md-headline">
+              {{home.currentShow.title}}  
+              <small ng-if="home.currentShow.year">
+                ({{home.currentShow.year}})
+              </small>
+          </h3>
+          <h5 class="md-subhead">
+            <div ng-if="home.currentShow.genres" ng-bind="home.currentShow.genres"></div>
+            {{home.currentShow.network}}: 
+            {{home.currentShow.status}}
+          </h5>
+          <p class="md-body-2">{{home.currentShow.overview}}</p>
+        </div>
+      </div>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+      <md-button  href="http://www.imdb.com/title/{{main.currentShow.ids.imdb}}/" 
+                  target="_blank" 
+                  md-autofocus>
+                More on imdb
+      </md-button>
+      <span flex></span>
+      <md-button  ng-click="cancel()">
+                Cancel
+      </md-button>
+    </div>
+  </form>
+</md-dialog>
