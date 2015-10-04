@@ -12,7 +12,7 @@
         </div>
         <form name="userForm" ng-hide="security.authData"> 
           <div layout="column">
-            <h4>Welcome, please log in:</h4>
+            <h3 class="md-headline">Welcome, please log in:</h3>
             <md-input-container flex>
               <label>User</label>
               <input type="text" ng-model="security.email">
@@ -25,8 +25,6 @@
           <div layout="row" layout-align="end">
             <md-button ng-click="security.createAccount()">Create</md-button>
             <md-button class="md-raised md-primary" ng-click="security.login()">Login</md-button>
-             <!-- <button ng-click="security.auth.$authWithOAuthPopup('google')">Login</button> -->
-            <!-- <md-button class="md-raised md-primary" ng-click="security.loginViaProvider()">Google login</md-button> -->
           </div>
           <div layout="row" layout-align="center end">
             <md-button class="md-raised md-warn" ng-click="security.loginViaProvider()">Google login</md-button>

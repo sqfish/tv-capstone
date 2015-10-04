@@ -5,16 +5,30 @@
     .module('TVcast.authentication')
     .controller('SecurityCtrl', SecurityCtrl);
 
-  SecurityCtrl.$inject = ['$firebaseAuth', '$state', 'fbAuthorization'];
+  SecurityCtrl.$inject = ['$firebaseAuth', '$state', 'fbAuthorization', 'AuthUserData'];
   
-  function SecurityCtrl ($firebaseAuth, $state, fbAuthorization) {
+  function SecurityCtrl ($firebaseAuth, $state, fbAuthorization, AuthUserData) {
     var vm = this;
     vm.auth = fbAuthorization;
     vm.email = "";
     vm.password = "";
     vm.auth.$onAuth(function(authData){
       vm.authData = authData;
-      console.log("authData: ", authData);
+      console.log("change in authData", authData);
+      if (authData) {
+        var uid = authData.uid;
+        console.log("uid ", uid);
+        AuthUserData.map(uid).$loaded(function(data){
+          vm.rootuid = data.$value;
+          console.log(data);
+          AuthUserData.profile(vm.rootuid).$loaded(function(data){
+            vm.userData = data;
+            console.log(data);
+          });
+        });
+      } else {
+        var uid = null;
+      }
     });
 
     vm.createAccount = function() {
