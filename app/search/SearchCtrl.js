@@ -6,9 +6,9 @@
   .controller("SearchCtrl", SearchCtrl)
   .controller("DialogController", DialogController);
 
-  SearchCtrl.$inject = ['$scope', 'QueryShows', '$mdDialog', 'FollowShow'];
+  SearchCtrl.$inject = ['$scope', 'QueryShows', '$mdDialog', '$mdToast', 'FollowShow'];
 
-  function SearchCtrl ($scope, QueryShows, $mdDialog, FollowShow) {
+  function SearchCtrl ($scope, QueryShows, $mdDialog, $mdToast, FollowShow) {
     var vm = this;
     vm.queryText = "";
     vm.queryResults = "";
@@ -30,6 +30,7 @@
       show = show.show;
       vm.status = 'You followed "' + show.title + '".';
       FollowShow.follow(show.ids.trakt);
+      vm.showSimpleToast();
     };
 
     vm.showAdvanced = function(ev, result) {
@@ -49,6 +50,36 @@
       }, function() {
         vm.status = 'You cancelled the dialog.';
       });
+    };
+
+    var last = {
+      bottom: false,
+      top: true,
+      left: false,
+      right: true
+    };
+    $scope.toastPosition = angular.extend({},last);
+    $scope.getToastPosition = function() {
+      sanitizePosition();
+      return Object.keys($scope.toastPosition)
+      .filter(function(pos) { return $scope.toastPosition[pos]; })
+      .join(' ');
+    };
+    function sanitizePosition() {
+      var current = $scope.toastPosition;
+      if ( current.bottom && last.top ) current.top = false;
+      if ( current.top && last.bottom ) current.bottom = false;
+      if ( current.right && last.left ) current.left = false;
+      if ( current.left && last.right ) current.right = false;
+      last = angular.extend({},current);
+    }
+    vm.showSimpleToast = function() {
+      $mdToast.show(
+        $mdToast.simple()
+          .content('Successfully followed selected show!')
+          .position($scope.getToastPosition())
+          .hideDelay(3000)
+      );
     };
   }
 

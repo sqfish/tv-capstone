@@ -1,20 +1,24 @@
-<div layout="column" layout-align="center start">
-  <md-content layout="row" layout-fill layout-align="center" flex>
-    <md-card flex="75">
-      <md-card-content layout="row" layout-wrap>
-        <md-input-container flex>
-        <label>Show Name</label>
+<!-- <md-content style="height: 600px;"> -->
+<md-subheader class="md-primary remove-padding">
+  <!-- <div layout="column" layout-align="center start"> -->
+    <md-content layout="row" layout-fill layout-align="center" flex>
+      <md-card flex="75">
+        <md-card-content layout="row" layout-wrap>
+          <md-input-container flex>
+            <label>Show Name</label>
         <input name="queryText" type="text" ng-model="search.queryText" required>
         </md-input-container>
         <md-button ng-click="search.search()" flex="15">Search</md-button>
       </md-card-content> 
-      <div>
+      <!-- <div>
         <div ng-if="search.status" layout="row" layout-align="center center" class="md-padding">
           {{search.status}}
-  </div>
-      </div>
+        </div>
+      </div> -->
     </md-card>
     </md-content>
+    </md-subheader>
+    <md-content style="height: 600px;">
 <div layout="row" layout-align="center start">
   <md-content layout-padding layout="row" layout-wrap layout-fill layout-align="center start">
     <md-card ng-repeat="item in search.queryResults | filter: {show: {ids: {imdb: '!!'}}} | filter: {show: {images: {poster: {$: '!!'}}}} | orderBy: '-score' as filtered_result track by $index" flex="20">
@@ -29,4 +33,6 @@
     </md-card>
   </md-content>
 </div>
-</div>
+</md-content>
+<!-- </div> -->
+<!-- </md-content> -->

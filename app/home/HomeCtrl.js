@@ -10,8 +10,10 @@
 
   function HomeCtrl (ShowData, AuthUserData, myFilterFilter, $mdDialog, $scope, currentAuth, $firebaseArray) {
     var vm = this;
-    var userData = AuthUserData.userData();
+    var userData = {};
     vm.showlist = null;
+    vm.limitFollowing = null;
+    vm.limitWatching = null;
     
     // Check to see if user ids have been stored in userData
     // This helps resolve data if user refreshes browser

@@ -1,3 +1,6 @@
+<md-content style="height: 600px;">
+<section ng-if="home.limitFollowing">
+  <md-subheader class="md-primary">Following: Returning Series</md-subheader>
 <div layout="row" layout-align="center start">
   <md-content layout-padding layout="row" layout-wrap layout-fill layout-align="center start">
     <md-card ng-repeat="item in home.limitFollowing | orderBy: '-rating' as result track by $index" flex="20">
@@ -11,7 +14,10 @@
     </md-card>
   </md-content>
 </div>
-    <md-divider></md-divider>
+</section>
+    <!-- <md-divider></md-divider> -->
+<section ng-if="home.limitWatching">
+  <md-subheader class="md-primary">Watching: Concluded Series</md-subheader>
 <div layout="row" layout-align="center start">
   <md-content layout-padding layout="row" layout-wrap layout-fill layout-align="center start">
     <md-card ng-repeat="item in home.limitWatching | orderBy: '-rating' as result track by $index" flex="20">
@@ -25,3 +31,5 @@
     </md-card>
   </md-content>
 </div>
+</section>
+</md-content>
