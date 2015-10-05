@@ -1,0 +1,116 @@
+<md-content layout-padding layout-margin>
+  <div layout="row" layout-align="space-between start">
+    <div layout="column" flex>
+      <h4   class="md-headline" layout-fill 
+            style="background-color: #FFC107; text-align: center;">Sunday</h4>
+      <div  ng-repeat="item in cal.limit | filter: {airs: {day: 'Sunday'}} | orderBy: '+airs.time'" 
+            layout-margin
+            ng-style="{'background-image': 'url({{item.images.thumb.full}})','background-size': 'cover', 'background-position': 'center center'}">
+              <!-- <div ng-src="{{item.images.thumb.full}}" width='120px'> -->
+              <p ng-if="item.images.thumb.full"><br><br><br></p>
+              <div  layout-padding 
+                    style="background-color: rgba(255,255,255,0.90); text-align: center;">
+                <h5 class="md-title">{{item.title | limitTo: 16}}<span ng-if="item.title.length > 16">...</span></h5>
+                <span class="md-body-2">{{item.airs.time}} eastern</span>
+                on <span class="md-body-2">{{item.network}}</span>
+              </div>
+      </div>
+    </div>
+    <div layout="column" flex>
+      <h4   class="md-headline" layout-fill 
+            style="background-color: #FFC107; text-align: center;">Monday</h4>
+      <div  ng-repeat="item in cal.limit | filter: {airs: {day: 'Monday'}} | orderBy: '+airs.time'" 
+            layout-margin
+            ng-style="{'background-image': 'url({{item.images.thumb.full}})','background-size': 'cover', 'background-position': 'center center'}">
+              <!-- <div ng-src="{{item.images.thumb.full}}" width='120px'> -->
+              <p ng-if="item.images.thumb.full"><br><br><br></p>
+              <div  layout-padding 
+                    style="background-color: rgba(255,255,255,0.90); text-align: center;">
+                <h5 class="md-title">{{item.title | limitTo: 16}}<span ng-if="item.title.length > 16">...</span></h5>
+                <span class="md-body-2">{{item.airs.time}} eastern</span>
+                on <span class="md-body-2">{{item.network}}</span>
+              </div>
+      </div>
+    </div>
+    <div layout="column" flex>
+      <h4   class="md-headline" layout-fill 
+            style="background-color: #FFC107; text-align: center;">Tuesday</h4>
+      <div  ng-repeat="item in cal.limit | filter: {airs: {day: 'Tuesday'}} | orderBy: '+airs.time'" 
+            layout-margin
+            ng-style="{'background-image': 'url({{item.images.thumb.full}})','background-size': 'cover', 'background-position': 'center center'}">
+              <!-- <div ng-src="{{item.images.thumb.full}}" width='120px'> -->
+              <p ng-if="item.images.thumb.full"><br><br><br></p>
+              <div  layout-padding 
+                    style="background-color: rgba(255,255,255,0.90); text-align: center;">
+                <h5 class="md-title">{{item.title | limitTo: 16}}<span ng-if="item.title.length > 16">...</span></h5>
+                <span class="md-body-2">{{item.airs.time}} eastern</span>
+                on <span class="md-body-2">{{item.network}}</span>
+              </div>
+      </div>
+    </div>
+    <div layout="column" flex>
+      <h4   class="md-headline" layout-fill 
+            style="background-color: #FFC107; text-align: center;">Wednesday</h4>
+      <div  ng-repeat="item in cal.limit | filter: {airs: {day: 'Wednesday'}} | orderBy: '+airs.time'" 
+            layout-margin
+            ng-style="{'background-image': 'url({{item.images.thumb.full}})','background-size': 'cover', 'background-position': 'center center'}">
+              <!-- <div ng-src="{{item.images.thumb.full}}" width='120px'> -->
+              <p ng-if="item.images.thumb.full"><br><br><br></p>
+              <div  layout-padding 
+                    style="background-color: rgba(255,255,255,0.90); text-align: center;">
+                <h5 class="md-title">{{item.title | limitTo: 16}}<span ng-if="item.title.length > 16">...</span></h5>
+                <span class="md-body-2">{{item.airs.time}} eastern</span>
+                on <span class="md-body-2">{{item.network}}</span>
+              </div>
+      </div>
+    </div>
+    <div layout="column" flex>
+      <h4   class="md-headline" layout-fill 
+            style="background-color: #FFC107; text-align: center;">Thursday</h4>
+      <div  ng-repeat="item in cal.limit | filter: {airs: {day: 'Thursday'}} | orderBy: '+airs.time'" 
+            layout-margin
+            ng-style="{'background-image': 'url({{item.images.thumb.full}})','background-size': 'cover', 'background-position': 'center center'}">
+              <!-- <div ng-src="{{item.images.thumb.full}}" width='120px'> -->
+              <p ng-if="item.images.thumb.full"><br><br><br></p>
+              <div  layout-padding 
+                    style="background-color: rgba(255,255,255,0.90); text-align: center;">
+                <h5 class="md-title">{{item.title | limitTo: 16}}<span ng-if="item.title.length > 16">...</span></h5>
+                <span class="md-body-2">{{item.airs.time}} eastern</span>
+                on <span class="md-body-2">{{item.network}}</span>
+              </div>
+      </div>
+    </div>
+    <div layout="column" flex>
+      <h4   class="md-headline" layout-fill 
+            style="background-color: #FFC107; text-align: center;">Friday</h4>
+      <div  ng-repeat="item in cal.limit | filter: {airs: {day: 'Friday'}} | orderBy: '+airs.time'" 
+            layout-margin
+            ng-style="{'background-image': 'url({{item.images.thumb.full}})','background-size': 'cover', 'background-position': 'center center'}">
+              <!-- <div ng-src="{{item.images.thumb.full}}" width='120px'> -->
+              <p ng-if="item.images.thumb.full"><br><br><br></p>
+              <div  layout-padding 
+                    style="background-color: rgba(255,255,255,0.90); text-align: center;">
+                <h5 class="md-title">{{item.title | limitTo: 16}}<span ng-if="item.title.length > 16">...</span></h5>
+                <span class="md-body-2">{{item.airs.time}} eastern</span>
+                on <span class="md-body-2">{{item.network}}</span>
+              </div>
+      </div>
+    </div>
+    <div layout="column" flex>
+      <h4   class="md-headline" layout-fill 
+            style="background-color: #FFC107; text-align: center;">Saturday</h4>
+      <div  ng-repeat="item in cal.limit | filter: {airs: {day: 'Saturday'}} | orderBy: '+airs.time'" 
+            layout-margin
+            ng-style="{'background-image': 'url({{item.images.thumb.full}})','background-size': 'cover', 'background-position': 'center center'}">
+              <!-- <div ng-src="{{item.images.thumb.full}}" width='120px'> -->
+              <p ng-if="item.images.thumb.full"><br><br><br></p>
+              <div  layout-padding 
+                    style="background-color: rgba(255,255,255,0.90); text-align: center;">
+                <h5 class="md-title">{{item.title | limitTo: 16}}<span ng-if="item.title.length > 16">...</span></h5>
+                <span class="md-body-2">{{item.airs.time}} eastern</span>
+                on <span class="md-body-2">{{item.network}}</span>
+              </div>
+      </div>
+    </div>
+  </div>
+</md-content>

@@ -20,11 +20,11 @@
       <div class="overview" layout="row" flex layout-padding style="background-color: #eee;">
         <div layout="column" layout-padding layout-margin layout-align="center center">
                     <h3>FOLLOWING</h3>
-                    <h4>33 <small>shows</small></h4>
+                    <h4>{{account.userData.following.length}} <small>shows</small></h4>
         </div>
         <div layout="column" layout-padding layout-margin layout-align="center center">
-                    <h3>FAVORITES</h3>
-                    <h4>4 <small>shows</small></h4>
+                    <h3>WATCHING</h3>
+                    <h4>{{account.userData.watching.length + account.userData.following.length}} <small>shows</small></h4>
         </div>
         <div layout="column" layout-padding layout-margin layout-align="center center">
                     <h3>NEWLY AIRED</h3>
@@ -32,14 +32,10 @@
         </div>
       </div>
     </div>
-    <div layout="row"> 
-      <div layout="column">
-        <md-button><md-icon class="material-icons">account_circle</md-icon></md-button>
-        <md-button flex><md-icon class="material-icons">create</md-icon></md-button>
-        <md-button flex><md-icon class="material-icons">create</md-icon></md-button>
-        <md-button flex><md-icon class="material-icons">create</md-icon></md-button>
-      </div>
-      <div>Tab content</div>
+    <div layout="column">
+      <div>Following</div>
+      <div>Watching</div>
+      <div>Newly aired</div>
     </div>
   </md-whiteframe>
 </div>

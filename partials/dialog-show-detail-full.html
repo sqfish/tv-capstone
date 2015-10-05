@@ -22,9 +22,14 @@
               </small>
           </h3>
           <h5 class="md-subhead">
-            <div ng-if="main.currentShow.genres" ng-bind="main.currentShow.genres"></div>
-            {{main.currentShow.network}}: 
-            {{main.currentShow.status}}
+            <div ng-if="main.currentShow.status == 'returning series'">
+              Airs on {{main.currentShow.airs.day}}s at {{main.currentShow.airs.time}} eastern
+              on {{main.currentShow.network}}.
+            </div>
+            <div ng-if="main.currentShow.genres" ng-bind="main.currentShow.genres"></div> 
+            <div ng-if="main.currentShow.status == 'ended'">
+              {{main.currentShow.network}}: {{main.currentShow.status}}
+            </div>
           </h5>
           <p class="md-body-2">{{main.currentShow.overview}}</p>
         </div>

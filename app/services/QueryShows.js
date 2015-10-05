@@ -2,13 +2,18 @@
   'use strict';
 
   angular
-  .module('TVcast')
+  .module('TVcast.search')
   .factory("QueryShows", QueryShows);
 
   QueryShows.$inject = ['$http'];
 
   function QueryShows($http) {
     var vm = this;
+    $http.defaults.headers.common = {
+      'Content-Type' : 'application/json',
+      'trakt-api-version' : '2',
+      'trakt-api-key' : 'd2a7a0ca1dbe8300bcfa5f0e1d38e10e03403ee7769e390f636411d18bbcc00e'
+    };
     return {
       search: function(query) {
         var rurl = 'https://api-v2launch.trakt.tv/search?query=' + query + '&type=show&?page=1&limit=100';
@@ -19,7 +24,7 @@
           headers: {
             'Content-Type' : 'application/json',
             'trakt-api-version' : '2',
-            'trakt-api-key' : appID
+            'trakt-api-key' : 'd2a7a0ca1dbe8300bcfa5f0e1d38e10e03403ee7769e390f636411d18bbcc00e'
           }
         };
         return $http(request); 
@@ -30,8 +35,9 @@
         var request = {
           method: 'GET',
           url: rurl,
+          cache: true,
           headers: {
-            'Content-Type' : 'application/json',
+            'Content-type' : 'application/json',
             'trakt-api-version' : '2',
             'trakt-api-key' : appID
           }
@@ -41,7 +47,7 @@
       lookup: function(id) {
         var rurl = 'https://api-v2launch.trakt.tv/shows/' + id + '?extended=full,images';
         var appID = 'd2a7a0ca1dbe8300bcfa5f0e1d38e10e03403ee7769e390f636411d18bbcc00e';
-        var request = {
+        vm.request = {
           method: 'GET',
           url: rurl,
           headers: {
@@ -50,7 +56,7 @@
             'trakt-api-key' : appID
           }
         };
-        return $http(request); 
+        return $http(vm.request); 
       }
     };
   }
