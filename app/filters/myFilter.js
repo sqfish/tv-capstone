@@ -16,7 +16,7 @@
       for (var i = 0; i < input.length; i++) {
         //Iterate through user's followed shows
         for (var j = 0; j < predicate.ids.slug.length; j++) {
-          if (input[i].ids.slug == predicate.ids.slug[j]) {
+          if (input[i].ids.slug == predicate.ids.slug[j].$value) {
             output.push(input[i]);
           }
         }
