@@ -6,61 +6,37 @@
   .controller("HomeCtrl", HomeCtrl)
   .controller("DialogDetailCtrl", DialogDetailCtrl);
 
-  HomeCtrl.$inject = ['ShowData', 'AuthUserData', 'myFilterFilter', '$mdDialog', '$scope', 'currentAuth'];
+  HomeCtrl.$inject = ['ShowData', 'AuthUserData', 'myFilterFilter', '$mdDialog', '$scope', 'currentAuth', '$firebaseArray'];
 
-  function HomeCtrl (ShowData, AuthUserData, myFilterFilter, $mdDialog, $scope, currentAuth) {
+  function HomeCtrl (ShowData, AuthUserData, myFilterFilter, $mdDialog, $scope, currentAuth, $firebaseArray) {
     var vm = this;
     var userData = AuthUserData.userData();
     vm.showlist = null;
-    // vm.following = '';
-    // vm.following = null;
     
     // Check to see if user ids have been stored in userData
     // This helps resolve data if user refreshes browser
     // SELF: This needs to DRY-ed, maybe with service for all data loading (main, home, profile)
-    // FOLLOWING
     if (!userData.uid || !userData.mainuid) {
       var uid = currentAuth.uid;
       AuthUserData.map(uid).$loaded(function(data){
         vm.rootuid = data.$value;
-        AuthUserData.following(vm.rootuid).$loaded(function(data){
-          vm.following = data;
+        AuthUserData.profile(vm.rootuid).$loaded(function(data){
+          vm.following = $firebaseArray(data.$ref().child('following'));
+          vm.watching = $firebaseArray(data.$ref().child('watching'));
           ShowData.$loaded(function(data){
             vm.showlist = ShowData;
             vm.limitFollowing = myFilterFilter(vm.showlist, {ids: {slug: vm.following}});
-          });
-        });
-      });
-    } else {
-      AuthUserData.following(userData.mainuid).$loaded(function(data){
-        vm.following = data;
-        ShowData.$loaded(function(data){
-          vm.showlist = ShowData;
-          vm.limitFollowing = myFilterFilter(vm.showlist, {ids: {slug: vm.following}});
-        });
-      });
-    }
-    // Check to see if user ids have been stored in userData
-    // This helps resolve data if user refreshes browser
-    // SELF: This needs to DRY-ed, maybe with service for all data loading (main, home, profile)
-    // WATCHING
-    if (!userData.uid || !userData.mainuid) {
-      uid = currentAuth.uid;
-      AuthUserData.map(uid).$loaded(function(data){
-        vm.rootuid = data.$value;
-        AuthUserData.watching(vm.rootuid).$loaded(function(data){
-          vm.watching = data;
-          ShowData.$loaded(function(data){
-            vm.showlist = ShowData;
             vm.limitWatching = myFilterFilter(vm.showlist, {ids: {slug: vm.watching}});
           });
         });
       });
     } else {
-      AuthUserData.watching(userData.mainuid).$loaded(function(data){
-        vm.watching = data;
+      AuthUserData.following(userData.mainuid).$loaded(function(data){
+        vm.following = $firebaseArray(data.$ref().child('following'));
+        vm.watching = $firebaseArray(data.$ref().child('watching'));
         ShowData.$loaded(function(data){
           vm.showlist = ShowData;
+          vm.limitFollowing = myFilterFilter(vm.showlist, {ids: {slug: vm.following}});
           vm.limitWatching = myFilterFilter(vm.showlist, {ids: {slug: vm.watching}});
         });
       });
