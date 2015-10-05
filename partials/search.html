@@ -18,7 +18,7 @@
     </md-card>
     </md-content>
     </md-subheader>
-    <md-content style="height: 600px;">
+    <md-content style="height: 500px;">
 <div layout="row" layout-align="center start">
   <md-content layout-padding layout="row" layout-wrap layout-fill layout-align="center start">
     <md-card ng-repeat="item in search.queryResults | filter: {show: {ids: {imdb: '!!'}}} | filter: {show: {images: {poster: {$: '!!'}}}} | orderBy: '-score' as filtered_result track by $index" flex="20">

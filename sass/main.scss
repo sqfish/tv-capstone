@@ -17,8 +17,17 @@
   width: 100%;
   text-align: center; }
 
-
-
+h5.md-title {
+  margin: 0px 0px 0px 0px;
+  padding: 5px;
+}
+.md-title, .md-headline {
+  white-space: nowrap; 
+  word-wrap: break-word;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+}
 div.remove-padding > .md-subheader-inner {
   padding: 0px;
 }

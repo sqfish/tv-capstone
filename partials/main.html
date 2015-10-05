@@ -1,10 +1,10 @@
-<md-content style="height: 600px;">
+<md-content style="height: 80vh;">
 <div layout="row" layout-align="center start">
   <md-content layout-padding layout="row" layout-wrap layout-fill layout-align="center start">
     <md-card ng-repeat="item in main.showlist | orderBy: '-rating' as filtered_result track by $index" flex="20">
       <img ng-src="{{item.images.poster.medium}}" class="md-card-image" height="350px" width="100px">
       <md-card-content>
-        <span class="md-headline">{{item.title | limitTo: 19}}<span ng-if="item.title.length > 19">...</span></span>
+        <h3 class="md-headline">{{item.title}}</h3>
       </md-card-content>
       <div class="md-actions" layout="row" layout-align="end center">
         <md-button ng-click="main.showAdvanced($event, filtered_result[$index])">Details</md-button>

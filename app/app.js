@@ -74,11 +74,11 @@ angular
     };
     var tabStateMappingFull = {
       'app.main': 0,
-      'app.home': 1,
-      'app.account': 2,
+      'app.popular': 1,
+      'app.home': 2,
       'app.search': 3,
-      'app.popular': 4,
-      'app.dashboard': 5
+      'app.dashboard': 4,
+      'app.account': 5
     };
     $scope.currentState = tabStateMapping[$state.current.name];
     $scope.currentStateFull = tabStateMappingFull[$state.current.name];
