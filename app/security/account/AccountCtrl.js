@@ -5,13 +5,16 @@
     .module('TVcast.account')
     .controller('AccountCtrl', AccountCtrl);
 
-  AccountCtrl.$inject = ['AuthUserData', 'currentAuth', '$firebaseArray'];
+  AccountCtrl.$inject = ['AuthUserData', 'currentAuth', '$firebaseArray', '$state'];
 
-  function AccountCtrl (AuthUserData, currentAuth, $firebaseArray) {
+  function AccountCtrl (AuthUserData, currentAuth, $firebaseArray, $state) {
     var vm = this;
     var userData = AuthUserData.userData();
     // Check to see if user ids have been stored in userData
     // This helps resolve data if user refreshes browser
+    if (currentAuth === null) {
+      $state.go('login');
+    } else {
     if (!userData.uid || !userData.mainuid) {
       var uid = currentAuth.uid;
       AuthUserData.map(uid).$loaded(function(data){
@@ -30,4 +33,5 @@
       });
     }
   }
+}
 })();

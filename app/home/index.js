@@ -15,7 +15,10 @@
               templateUrl: 'partials/home.html',
               controller: 'HomeCtrl as home',
               resolve: {
-                showlist: "ShowData"
+                showlist: "ShowData",
+                'currentAuth': ['fbAuthorization', function(fbAuthorization) {
+                  return fbAuthorization.$requireAuth();
+                }]
               }
             }
           }

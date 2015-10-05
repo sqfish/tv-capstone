@@ -48,9 +48,11 @@ angular
   ])
   .controller('AppCtrl', ['currentAuth', '$scope', '$state', 'fbAuthorization', 'AuthUserData', function(currentAuth, $scope, $state, fbAuthorization, AuthUserData){
     $scope.currentAuth = currentAuth;
+    console.log("currentAuth", currentAuth);
     var userData = AuthUserData.userData();
     // Check to see if user ids have been stored in userData
     // This helps resolve data if user refreshes browser
+    if (currentAuth !== null) {
     if (!userData.uid || !userData.mainuid) {
       var uid = currentAuth.uid;
       AuthUserData.map(uid).$loaded(function(data){
@@ -64,17 +66,22 @@ angular
         $scope.userData = data;
       });
     }
-
+    }
     var tabStateMapping = {
+      'app.main': 0,
+      'app.popular': 1,
+      'login': 2
+    };
+    var tabStateMappingFull = {
       'app.main': 0,
       'app.home': 1,
       'app.account': 2,
       'app.search': 3,
       'app.popular': 4,
-      'login': 5,
-      'app.dashboard': 6
+      'app.dashboard': 5
     };
     $scope.currentState = tabStateMapping[$state.current.name];
+    $scope.currentStateFull = tabStateMappingFull[$state.current.name];
     
     $scope.logout = function() {
       fbAuthorization.$unauth();

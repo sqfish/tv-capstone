@@ -6,9 +6,9 @@
   .controller("HomeCtrl", HomeCtrl)
   .controller("DialogDetailCtrl", DialogDetailCtrl);
 
-  HomeCtrl.$inject = ['ShowData', 'AuthUserData', 'myFilterFilter', '$mdDialog', '$scope', 'currentAuth', '$firebaseArray'];
+  HomeCtrl.$inject = ['ShowData', 'AuthUserData', 'myFilterFilter', '$mdDialog', '$scope', 'currentAuth', '$firebaseArray', '$state'];
 
-  function HomeCtrl (ShowData, AuthUserData, myFilterFilter, $mdDialog, $scope, currentAuth, $firebaseArray) {
+  function HomeCtrl (ShowData, AuthUserData, myFilterFilter, $mdDialog, $scope, currentAuth, $firebaseArray, $state) {
     var vm = this;
     var userData = {};
     vm.showlist = null;
@@ -18,6 +18,9 @@
     // Check to see if user ids have been stored in userData
     // This helps resolve data if user refreshes browser
     // SELF: This needs to DRY-ed, maybe with service for all data loading (main, home, profile)
+    if (currentAuth === null) {
+      $state.go('login');
+    } else {
     if (!userData.uid || !userData.mainuid) {
       var uid = currentAuth.uid;
       AuthUserData.map(uid).$loaded(function(data){
@@ -43,6 +46,7 @@
         });
       });
     }
+  }
 
     vm.showAdvanced = function(ev, result) {
       vm.currentShow = result;

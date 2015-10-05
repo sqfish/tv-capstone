@@ -13,7 +13,12 @@
           views: {
             'content@app': {
               templateUrl: 'partials/account.html',
-              controller: 'AccountCtrl as account'
+              controller: 'AccountCtrl as account',
+              resolve: {
+                'currentAuth': ['fbAuthorization', function(fbAuthorization) {
+                  return fbAuthorization.$requireAuth();
+                }]
+              }
             }
           }
         });

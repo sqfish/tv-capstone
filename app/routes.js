@@ -8,7 +8,7 @@
   function AppRoutes($locationProvider, $stateProvider, $urlRouterProvider) {
     $locationProvider.html5Mode(false);
     $urlRouterProvider.when("", "/app")
-                      .otherwise('/login');
+                      .otherwise('/main');
     $stateProvider
       .state('login', {
           url: '/login', 
@@ -33,7 +33,7 @@
         },
         resolve: {
           'currentAuth': ['fbAuthorization', function(fbAuthorization) {
-            return fbAuthorization.$requireAuth();
+            return fbAuthorization.$waitForAuth();
           }]
         }
       });

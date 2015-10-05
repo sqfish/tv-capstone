@@ -9,20 +9,23 @@
         </div>
         <div ng-hide="currentAuth">
           <p>Welcome, please log in
-          <md-button ng-click="auth.$authWithOAuthPopup('google')">Login</md-button></p>
+          <md-button ng-click="$state.go('login')">Login</md-button></p>
         </div>
       </div>
     </md-toolbar>
-  <md-tabs md-border-bottom md-selected="currentState">
+  <md-tabs md-border-bottom md-selected="currentState" ng-hide="currentAuth">
+    <md-tab ui-sref="app.main" label="Main"></md-tab>
+    <md-tab ui-sref="app.popular" label="Popular"></md-tab>
+    <md-tab ui-sref="login" label="Login"></md-tab>
+  </md-tabs>
+  <md-tabs md-border-bottom md-selected="currentStateFull" ng-show="currentAuth">
     <md-tab ui-sref="app.main" label="Main"></md-tab>
     <md-tab ui-sref="app.home" label="Home"></md-tab>
     <md-tab ui-sref="app.account" label="My Account"></md-tab>
     <md-tab ui-sref="app.search" label="Search"></md-tab>
     <md-tab ui-sref="app.popular" label="Popular"></md-tab>
-    <md-tab ui-sref="login" label="Login"></md-tab>
     <md-tab ui-sref="app.dashboard" label="Dashboard"></md-tab>
   </md-tabs>
-
 </div>
 
 <!-- <div layout="column" class="relative" layout-fill role="main">
