@@ -34,6 +34,11 @@
         var followingref = new Firebase('https://tv-capstone.firebaseio.com/users/' + mainuid + '/following');
         return $firebaseArray(followingref);
       },
+      watching: function(mainuid) {
+        user.mainuid = mainuid;
+        var watchingref = new Firebase('https://tv-capstone.firebaseio.com/users/' + mainuid + '/watching');
+        return $firebaseArray(watchingref);
+      },
       userData: function() {
         if(user) {
           return user;
