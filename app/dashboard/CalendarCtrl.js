@@ -5,9 +5,9 @@
     .module('TVcast.dashboard')
     .controller('CalendarCtrl', CalendarCtrl);
 
-    CalendarCtrl.$inject = ['ShowData', 'AuthUserData', 'myFilterFilter', '$mdDialog', '$scope', 'currentAuth', '$state'];
+    CalendarCtrl.$inject = ['ShowData', 'AuthUserData', '$mdDialog', '$scope', 'currentAuth', '$state'];
 
-  function CalendarCtrl (ShowData, AuthUserData, myFilterFilter, $mdDialog, $scope, currentAuth, $state) {
+  function CalendarCtrl (ShowData, AuthUserData, $mdDialog, $scope, currentAuth, $state) {
     var vm = this;
     var userData = AuthUserData.userData();
     vm.showlist = null;
@@ -18,28 +18,22 @@
     if (currentAuth === null) {
       $state.go('login');
     } else {
-    if (!userData.uid || !userData.mainuid) {
-      var uid = currentAuth.uid;
-      AuthUserData.map(uid).$loaded(function(data){
-        vm.rootuid = data.$value;
-        AuthUserData.following(vm.rootuid).$loaded(function(data){
-          vm.following = data;
-          ShowData.$loaded(function(data){
+      if (!userData.uid || !userData.mainuid) {
+        var uid = currentAuth.uid;
+        AuthUserData.map(uid).$loaded(function(data){
+          vm.rootuid = data.$value;
+          AuthUserData.following(vm.rootuid).$loaded(function(data){
+            vm.following = data;
             vm.showlist = ShowData;
-            vm.limit = myFilterFilter(vm.showlist, {ids: {slug: vm.following}});
           });
         });
-      });
-    } else {
-      AuthUserData.following(userData.mainuid).$loaded(function(data){
-        vm.following = data;
-        ShowData.$loaded(function(data){
+      } else {
+        AuthUserData.following(userData.mainuid).$loaded(function(data){
+          vm.following = data;
           vm.showlist = ShowData;
-          vm.limit = myFilterFilter(vm.showlist, {ids: {slug: vm.following}});
         });
-      });
+      }
     }
-  }
   }
 
 })();

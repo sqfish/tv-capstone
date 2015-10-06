@@ -4,7 +4,7 @@
     <div layout="column" flex>
       <h4   class="md-headline" layout-fill 
             style="background-color: #FFC107; text-align: center;">Sunday</h4>
-      <div  ng-repeat="item in cal.limit | filter: {airs: {day: 'Sunday'}} | orderBy: '+airs.time'" 
+      <div  ng-repeat="item in cal.showlist | myFilter: {ids: {slug: cal.following}} | filter: {airs: {day: 'Sunday'}} | orderBy: '+airs.time'" 
             layout-margin
             ng-style="{'background-image': 'url({{item.images.thumb.full}})','background-size': 'cover', 'background-position': 'center center'}">
               <!-- <div ng-src="{{item.images.thumb.full}}" width='120px'> -->
@@ -20,7 +20,7 @@
     <div layout="column" flex>
       <h4   class="md-headline" layout-fill 
             style="background-color: #FFC107; text-align: center;">Monday</h4>
-      <div  ng-repeat="item in cal.limit | filter: {airs: {day: 'Monday'}} | orderBy: '+airs.time'" 
+      <div  ng-repeat="item in cal.showlist | myFilter: {ids: {slug: cal.following}} | filter: {airs: {day: 'Monday'}} | orderBy: '+airs.time'" 
             layout-margin
             ng-style="{'background-image': 'url({{item.images.thumb.full}})','background-size': 'cover', 'background-position': 'center center'}">
               <!-- <div ng-src="{{item.images.thumb.full}}" width='120px'> -->
@@ -36,7 +36,7 @@
     <div layout="column" flex>
       <h4   class="md-headline" layout-fill 
             style="background-color: #FFC107; text-align: center;">Tuesday</h4>
-      <div  ng-repeat="item in cal.limit | filter: {airs: {day: 'Tuesday'}} | orderBy: '+airs.time'" 
+      <div  ng-repeat="item in cal.showlist | myFilter: {ids: {slug: cal.following}} | filter: {airs: {day: 'Tuesday'}} | orderBy: '+airs.time'" 
             layout-margin
             ng-style="{'background-image': 'url({{item.images.thumb.full}})','background-size': 'cover', 'background-position': 'center center'}">
               <!-- <div ng-src="{{item.images.thumb.full}}" width='120px'> -->
@@ -52,7 +52,7 @@
     <div layout="column" flex>
       <h4   class="md-headline" layout-fill 
             style="background-color: #FFC107; text-align: center;">Wednesday</h4>
-      <div  ng-repeat="item in cal.limit | filter: {airs: {day: 'Wednesday'}} | orderBy: '+airs.time'" 
+      <div  ng-repeat="item in cal.showlist | myFilter: {ids: {slug: cal.following}} | filter: {airs: {day: 'Wednesday'}} | orderBy: '+airs.time'" 
             layout-margin
             ng-style="{'background-image': 'url({{item.images.thumb.full}})','background-size': 'cover', 'background-position': 'center center'}">
               <!-- <div ng-src="{{item.images.thumb.full}}" width='120px'> -->
@@ -68,7 +68,7 @@
     <div layout="column" flex>
       <h4   class="md-headline" layout-fill 
             style="background-color: #FFC107; text-align: center;">Thursday</h4>
-      <div  ng-repeat="item in cal.limit | filter: {airs: {day: 'Thursday'}} | orderBy: '+airs.time'" 
+      <div  ng-repeat="item in cal.showlist | myFilter: {ids: {slug: cal.following}} | filter: {airs: {day: 'Thursday'}} | orderBy: '+airs.time'" 
             layout-margin
             ng-style="{'background-image': 'url({{item.images.thumb.full}})','background-size': 'cover', 'background-position': 'center center'}">
               <!-- <div ng-src="{{item.images.thumb.full}}" width='120px'> -->
@@ -84,7 +84,7 @@
     <div layout="column" flex>
       <h4   class="md-headline" layout-fill 
             style="background-color: #FFC107; text-align: center;">Friday</h4>
-      <div  ng-repeat="item in cal.limit | filter: {airs: {day: 'Friday'}} | orderBy: '+airs.time'" 
+      <div  ng-repeat="item in cal.showlist | myFilter: {ids: {slug: cal.following}} | filter: {airs: {day: 'Friday'}} | orderBy: '+airs.time'" 
             layout-margin
             ng-style="{'background-image': 'url({{item.images.thumb.full}})','background-size': 'cover', 'background-position': 'center center'}">
               <!-- <div ng-src="{{item.images.thumb.full}}" width='120px'> -->
@@ -100,7 +100,7 @@
     <div layout="column" flex>
       <h4   class="md-headline" layout-fill 
             style="background-color: #FFC107; text-align: center;">Saturday</h4>
-      <div  ng-repeat="item in cal.limit | filter: {airs: {day: 'Saturday'}} | orderBy: '+airs.time'" 
+      <div  ng-repeat="item in cal.showlist | myFilter: {ids: {slug: cal.following}} | filter: {airs: {day: 'Saturday'}} | orderBy: '+airs.time'" 
             layout-margin
             ng-style="{'background-image': 'url({{item.images.thumb.full}})','background-size': 'cover', 'background-position': 'center center'}">
               <!-- <div ng-src="{{item.images.thumb.full}}" width='120px'> -->

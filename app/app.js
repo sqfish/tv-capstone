@@ -10,7 +10,8 @@ angular
       'TVcast.popular',
       'TVcast.account',
       'TVcast.home',
-      'TVcast.dashboard'
+      'TVcast.dashboard',
+      'TVcast.episodes'
   ])
   .config(['$mdThemingProvider',
     function ($mdThemingProvider){
@@ -78,7 +79,8 @@ angular
       'app.home': 2,
       'app.search': 3,
       'app.dashboard': 4,
-      'app.account': 5
+      'app.account': 5,
+      'app.episodes': 6
     };
     $scope.currentState = tabStateMapping[$state.current.name];
     $scope.currentStateFull = tabStateMappingFull[$state.current.name];

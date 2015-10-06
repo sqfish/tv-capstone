@@ -24,7 +24,7 @@
     <md-card ng-repeat="item in search.queryResults | filter: {show: {ids: {imdb: '!!'}}} | filter: {show: {images: {poster: {$: '!!'}}}} | orderBy: '-score' as filtered_result track by $index" flex="20">
       <img ng-src="{{item.show.images.poster.medium}}" class="md-card-image" height="350px" width="200px">
       <md-card-content>
-        <span class="md-title">{{item.show.title | limitTo: 23}}<span ng-if="item.show.title.length > 23">...</span></span>
+        <h3 class="md-headline">{{item.show.title}}</h3>
       </md-card-content>
       <div class="md-actions" layout="row" layout-align="end center">
         <md-button ng-click="search.showAdvanced($event, filtered_result[$index])">Details</md-button>

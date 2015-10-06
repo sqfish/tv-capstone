@@ -1,9 +1,9 @@
 <md-content style="height: 80vh;">
-<section ng-if="home.limitFollowing">
+<section ng-if="home.following">
   <md-subheader class="md-primary">Following: Returning Series</md-subheader>
 <div layout="row" layout-align="center start">
   <md-content layout-padding layout="row" layout-wrap layout-fill layout-align="center start">
-    <md-card ng-repeat="item in home.limitFollowing | orderBy: '-rating' as result track by $index" flex="20">
+    <md-card ng-repeat="item in home.showlist | myFilter: {ids: {slug: home.following}} | orderBy: '-rating' as result track by $index" flex="20">
       <img ng-src="{{item.images.poster.medium}}" class="md-card-image" height="350px" width="100px">
       <md-card-content>
         <h3 class="md-headline">{{item.title}}</h3>
@@ -15,12 +15,11 @@
   </md-content>
 </div>
 </section>
-    <!-- <md-divider></md-divider> -->
-<section ng-if="home.limitWatching">
+<section ng-if="home.watching">
   <md-subheader class="md-primary">Watching: Concluded Series</md-subheader>
 <div layout="row" layout-align="center start">
   <md-content layout-padding layout="row" layout-wrap layout-fill layout-align="center start">
-    <md-card ng-repeat="item in home.limitWatching | orderBy: '-rating' as result track by $index" flex="20">
+    <md-card ng-repeat="item in home.showlist | myFilter: {ids: {slug: home.watching}} | orderBy: '-rating' as result track by $index" flex="20">
       <img ng-src="{{item.images.poster.medium}}" class="md-card-image" height="350px" width="100px">
       <md-card-content>
         <h3 class="md-headline">{{item.title}}</h3>

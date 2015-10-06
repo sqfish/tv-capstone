@@ -2,6 +2,30 @@
   object-fit: cover;
 }
 
+.star-rating {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  
+  .star {
+    padding: 1px;
+    color: #ddd;
+    font-size: 20px;
+    text-shadow: .05em .05em #aaa;
+    list-style-type: none;
+    display: inline-block;
+    cursor: pointer;
+
+    &.filled {
+      color: #fd0;
+    }
+  }
+
+  &.readonly .star.filled {
+    color: #666;
+  }
+}
+
 .gridListdemoDynamicTiles md-grid-tile {
   transition: all 300ms ease-out 50ms; }
 .gridListdemoDynamicTiles md-grid-tile md-icon {
@@ -17,8 +41,13 @@
   width: 100%;
   text-align: center; }
 
-h5.md-title {
+h5.md-title, h3.md-headline {
   margin: 0px 0px 0px 0px;
+  padding: 5px;
+}
+
+h3.md-display-1 {
+  margin: 0px 0px 0px 20px;
   padding: 5px;
 }
 .md-title, .md-headline {
@@ -28,12 +57,10 @@ h5.md-title {
   text-overflow: ellipsis;
   word-break: keep-all;
 }
+
 div.remove-padding > .md-subheader-inner {
   padding: 0px;
 }
-
-
-
 
 
 /* -- The "User's Menu Container" specific elements. Custom container for the snippet -- */

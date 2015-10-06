@@ -6,9 +6,9 @@
   .controller("HomeCtrl", HomeCtrl)
   .controller("DialogDetailCtrl", DialogDetailCtrl);
 
-  HomeCtrl.$inject = ['ShowData', 'AuthUserData', 'myFilterFilter', '$mdDialog', '$scope', 'currentAuth', '$firebaseArray', '$state'];
+  HomeCtrl.$inject = ['ShowData', 'AuthUserData', '$mdDialog', '$scope', 'currentAuth', '$firebaseArray', '$state'];
 
-  function HomeCtrl (ShowData, AuthUserData, myFilterFilter, $mdDialog, $scope, currentAuth, $firebaseArray, $state) {
+  function HomeCtrl (ShowData, AuthUserData, $mdDialog, $scope, currentAuth, $firebaseArray, $state) {
     var vm = this;
     var userData = {};
     vm.showlist = null;
@@ -28,22 +28,14 @@
         AuthUserData.profile(vm.rootuid).$loaded(function(data){
           vm.following = $firebaseArray(data.$ref().child('following'));
           vm.watching = $firebaseArray(data.$ref().child('watching'));
-          ShowData.$loaded(function(data){
-            vm.showlist = ShowData;
-            vm.limitFollowing = myFilterFilter(vm.showlist, {ids: {slug: vm.following}});
-            vm.limitWatching = myFilterFilter(vm.showlist, {ids: {slug: vm.watching}});
-          });
+          vm.showlist = ShowData;
         });
       });
     } else {
       AuthUserData.following(userData.mainuid).$loaded(function(data){
         vm.following = $firebaseArray(data.$ref().child('following'));
         vm.watching = $firebaseArray(data.$ref().child('watching'));
-        ShowData.$loaded(function(data){
-          vm.showlist = ShowData;
-          vm.limitFollowing = myFilterFilter(vm.showlist, {ids: {slug: vm.following}});
-          vm.limitWatching = myFilterFilter(vm.showlist, {ids: {slug: vm.watching}});
-        });
+        vm.showlist = ShowData;
       });
     }
   }
