@@ -5,9 +5,9 @@
     .module('TVcast.account')
     .controller('AccountCtrl', AccountCtrl);
 
-  AccountCtrl.$inject = ['AuthUserData', 'currentAuth', '$firebaseArray', '$state'];
+  AccountCtrl.$inject = ['AuthUserData', 'currentAuth', 'ShowData', '$firebaseArray', '$state'];
 
-  function AccountCtrl (AuthUserData, currentAuth, $firebaseArray, $state) {
+  function AccountCtrl (AuthUserData, currentAuth, ShowData, $firebaseArray, $state) {
     var vm = this;
     var userData = AuthUserData.userData();
     // Check to see if user ids have been stored in userData
@@ -23,6 +23,7 @@
           vm.userData = data;
           vm.following = $firebaseArray(data.$ref().child('following'));
           vm.watching = $firebaseArray(data.$ref().child('watching'));
+          vm.showlist = ShowData;
         });
       });
     } else {
@@ -30,6 +31,7 @@
         vm.userData = data;
         vm.following = $firebaseArray(data.$ref().child('following'));
         vm.watching = $firebaseArray(data.$ref().child('watching'));
+        vm.showlist = ShowData;
       });
     }
   }

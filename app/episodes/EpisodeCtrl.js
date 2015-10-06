@@ -28,8 +28,6 @@
         });
       });
     };
-
-
   
     if (currentAuth === null) {
       $state.go('login');
@@ -38,12 +36,22 @@
         return getUserShows(userData);
       }).then(function(userShows){
         vm.userShows = userShows;
+        console.log(userShows);
         vm.showlist = ShowData;
-        var slug = userShows.watching[0].$id;
-        return QueryShows.episodes(slug);
-      }).then(function(response){
-        console.log("data", response.data);
+        // var slug = selectedValue.$id;
+        // return QueryShows.episodes(slug);
       });
+
+      vm.getEpisodeData = function(slug) {
+        vm.episodeData = null;
+        vm.toggleView = !vm.toggleView;
+        vm.selectedShow = slug;
+        QueryShows.episodes(slug).then(function(response){
+          vm.episodeData = response.data;
+          console.log("data", response.data);
+        });
+        // console.log("episodeData", vm.episodeData);
+      };
     }
   }
 })();
