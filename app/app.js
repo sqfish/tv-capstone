@@ -47,7 +47,7 @@ angular
       });
     }
   ])
-  .controller('AppCtrl', ['currentAuth', '$scope', '$state', 'fbAuthorization', 'AuthUserData', function(currentAuth, $scope, $state, fbAuthorization, AuthUserData){
+  .controller('AppCtrl', ['$scope', '$state', 'currentAuth', 'fbAuthorization', 'AuthUserData',  function($scope, $state, currentAuth, fbAuthorization, AuthUserData){
     $scope.currentAuth = currentAuth;
     console.log("currentAuth", currentAuth);
     var userData = AuthUserData.userData();
