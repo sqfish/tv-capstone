@@ -2,7 +2,7 @@
 <div layout="row" layout-align="center start">
   <md-content layout-padding layout="row" layout-wrap layout-fill layout-align="center start">
     <md-card ng-repeat="item in main.showlist | orderBy: '-rating' as filtered_result track by $index" flex="20">
-      <img ng-src="{{item.images.poster.medium}}" class="md-card-image" height="350px" width="100px">
+      <img ng-src="{{item.images.poster.medium}}" onerror="this.src='/img/logo2-bl.png'" class="md-card-image" height="350px" width="100px">
       <md-card-content>
         <h3 class="md-headline">{{item.title}}</h3>
       </md-card-content>
